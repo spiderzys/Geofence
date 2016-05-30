@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Geofence" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,82 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="j5i-a9-8ki">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dqm-GV-NS1">
+                                <rect key="frame" x="20" y="560" width="51" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="B5F-70-kdM"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="switchAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Pzq-wl-8th"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A42-lK-WgA">
+                                <rect key="frame" x="290" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="S56-vF-OeC"/>
+                                    <constraint firstAttribute="width" constant="20" id="a9g-sa-KpN"/>
+                                </constraints>
+                                <state key="normal" image="recurring_appointment_filled">
+                                    <color key="titleColor" red="0.73715244160000004" green="0.60793635859999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="Je5-Og-hch"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbq-2y-PzX">
+                                <rect key="frame" x="515" y="560" width="42" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="ERS-Wb-qfH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.18289052780000001" blue="0.28073342299999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIZ-pT-c12">
+                                <rect key="frame" x="260" y="571" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4Db-Ug-Lcq"/>
+                                    <constraint firstAttribute="width" constant="80" id="tbH-Jd-nGW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="A42-lK-WgA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2lS-3X-SnH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j5i-a9-8ki" secondAttribute="bottom" id="4Gm-7C-0yP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="dqm-GV-NS1" secondAttribute="leading" id="6CY-YF-92l"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dqm-GV-NS1" secondAttribute="bottom" constant="10" id="6bB-kV-LTs"/>
+                            <constraint firstItem="Gbq-2y-PzX" firstAttribute="height" secondItem="dqm-GV-NS1" secondAttribute="height" id="Ct1-7N-uny"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j5i-a9-8ki" secondAttribute="trailing" constant="-20" id="HGd-Tj-hBM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gbq-2y-PzX" secondAttribute="trailing" constant="23" id="Hsy-fw-ktW"/>
+                            <constraint firstItem="A42-lK-WgA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="JYU-bZ-6PC"/>
+                            <constraint firstItem="j5i-a9-8ki" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="LQ1-bj-Isg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CIZ-pT-c12" secondAttribute="bottom" constant="8" id="ShZ-kh-Z7c"/>
+                            <constraint firstItem="CIZ-pT-c12" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tmh-cf-PgA"/>
+                            <constraint firstItem="Gbq-2y-PzX" firstAttribute="centerY" secondItem="dqm-GV-NS1" secondAttribute="centerY" id="vO7-4D-bei"/>
+                            <constraint firstItem="j5i-a9-8ki" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="yKe-Qh-0cz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activationSwitch" destination="dqm-GV-NS1" id="2YB-6T-lIF"/>
+                        <outlet property="distanceLabel" destination="CIZ-pT-c12" id="7jW-Q4-uRU"/>
+                        <outlet property="eventLabel" destination="Gbq-2y-PzX" id="GaZ-Ac-Bqh"/>
+                        <outlet property="mapView" destination="j5i-a9-8ki" id="khf-fR-Hh8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="276" y="404"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="recurring_appointment_filled" width="25" height="25"/>
+    </resources>
 </document>
